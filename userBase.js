@@ -1,3 +1,5 @@
+const User = require('./user');
+
 const users = [
   new User('Uma'),
   new User('Josh'),
@@ -5,18 +7,31 @@ const users = [
 ];
 
 class UserBase {
-  constructor() {
+  constructor(array) {
+    this.array = array;
   }
 
   count() {
-    return ;
+    return this.array.length;
   }
 
   getNames() {
-    return ;
+    return this.array.map((element) => {
+      return element.getName()
+    });
   }
 
   getIntroductions() {
-    return ;
+    return this.array.map((element) => {
+      return element.getIntroduction()
+    });
   }
 }
+
+const userBase = new UserBase(users);
+
+console.log(userBase.count());
+console.log(userBase.getNames());
+console.log(userBase.getIntroductions());
+
+module.exports = UserBase;
